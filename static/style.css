@@ -92,5 +92,5 @@ body{
     margin-right:-4px;
 }
 .centered {
-    text-align:center;
+    text-align:center !important;
 }
