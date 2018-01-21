@@ -13,19 +13,22 @@
 	</head>
 	<body>
 		<div class="main container-fluid"> 
-                    <div class="row row-centered centered">
-                        <div class="col-xs-12 col-sm-6 col-centered centered">
-                            <div id="image-wrapper">
-                                    <img id="logoImage" src="{{url_for('static', filename='images/logo.PNG')}}">
-                            </div>
-                            
-                            <center>
-                                    <input class="searchBox" id="inputId">
-                                    <button class="searchBox" id="inputButton" onClick="submitInput()"><a href="#skip">Submit</a></button>]
-                            </center>	
-                        </div>
-		    </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <div id="image-wrapper">
+                            <img id="logoImage" src="{{url_for('static', filename='images/logo.PNG')}}">
+                    </div>
+                    
+                    <center>
+                            <input class="searchBox" id="inputId">
+                            <button class="searchBox" id="inputButton" onClick="submitInput()"><a href="#skip">Submit</a></button>
+                            <button class="searchBox" id="inputButton" onClick="getText()">getText</button>
+                    </center>
+
                 </div>
+   			</div>
+        </div>
+
 		<div class="section-2">
 			<div id="skip-atag"><a  name="skip"></a></div><
 			<div id="weather"></div>
@@ -34,6 +37,8 @@
 		<div >
 			<a name="skip"></a>
 		</div>
+
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
