@@ -4,7 +4,6 @@
 			<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
 	</head>
 	<body>
-
 		<div class="main"> 
 			<div id="image-wrapper">
 				<img id="logoImage" src="{{url_for('static', filename='images/logo.PNG')}}">
@@ -13,15 +12,12 @@
 			<center>
 				<input class="searchBox" id="inputId">
 				<button class="searchBox" id="inputButton" onClick="submitInput()"><a href="#skip">Submit</a></button>
-			</center>
-			
+				<button class="searchBox" id="inputButton" onClick="getText()">getText</button>
+			</center>	
 		</div>
 		<div >
 			<a name="skip"></a>
 		</div>
-		
-		
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 		<script>
@@ -42,11 +38,10 @@
 				var searchInput = $('#inputId').val().toLowerCase();
 				$.ajax({
 					type: "GET",
-					url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyArlXIrPso2sOwQW-7Kpc16yBzyPjSiOow&cx=018119326831568434394:3dak1dqjeou&q=" + searchInput,
+					url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyArlXIrPso2sOwQW-7Kpc16yBzyPjSiOow&cx=018119326831568434394:3dak1dqjeou&q=" + searchInput + "%20climate%20change%20news",
 					success: function(data) {
-						console.log(searchInput)
+						// console.log(searchInput);
 						for (var i = 0; i < data.items.length; i++) {
-							console.log(data.items[i])
 							var firebaseRef = firebase.database().ref();
 							var title = data.items[i].title;
 							title = title.split('.').join(' ');
@@ -64,6 +59,25 @@
 					}
 				});
 			}
+
+			// function getText() {
+			// 	var firebaseRef = firebase.database().ref('queryName');
+			// 	firebaseRef.on('child.added,' function(snapshot) {
+			// 		console.log(child.added);
+			// 	});
+				// $.ajax({
+				// 	type: "GET",
+				// 	url: "https://api.diffbot.com/v3/article?token=88324d304eb1dafddd1cf068d478c581&url=" + obj.link,
+				// 	success: function(content) {
+				// 		console.log(searchInput);
+				// 		console.log(title);
+				// 		firebaseRef.child("queryName/" + searchInput).child(title).update({
+				// 			text: content.objects[0].text
+				// 		});
+				// 	}
+
+				// })
+			// }
 		</script>
 	</body>
 </html>
