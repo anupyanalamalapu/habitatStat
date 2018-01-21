@@ -1,15 +1,39 @@
+#image-wrapper{
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
 
+#logoImage{
+	height: auto;
+	width: 40vw;
+}
 .searchBox{
-	margin-top: 30%;
+	
+}
+
+#inputId{
+	padding: 1% 2% 1% 2%;
+	height: 7%;
+	width: 25%;
+	border: 3px solid grey;
+	border-radius: 25px;
+}
+
+#inputButton{
+	height: 7%;
+	border: 1px solid grey;
+	border-radius: 25px;
 }
 
 div.main{
 	width: 100%;
 	height: 100%;
 	background-image: url(images/background.jpg);
-	background-size: cover;    
+	background-size: 100% 100%;    
 	background-repeat: no-repeat;                 
-    background-position: center center;
+    background-position: center top;
+    background-attachment: fixed;
 }
 
 body{

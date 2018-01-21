@@ -6,13 +6,21 @@
 	<body>
 
 		<div class="main"> 
+			<div id="image-wrapper">
+				<img id="logoImage" src="images/logo.PNG">
+			</div>
 			
 			<center>
 				<input class="searchBox" id="inputId">
-				<button class="searchBox" onClick="submitInput()">Submit</button>
+				<button class="searchBox" id="inputButton" onClick="submitInput()"><a href="#skip">Submit</a></button>
 			</center>
 			
 		</div>
+		<div >
+			<a name="skip"></a>
+		</div>
+		
+		
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
