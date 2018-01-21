@@ -1,3 +1,58 @@
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+.centered {
+    text-align:center !important;
+}
+
+#skip-atag{
+
+}
+#weather{
+	background-color: black;
+	width: 60%;
+	height: 15%;
+	margin-top: 3%;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+#graphs{
+	background-color: black;
+	float: left;
+	width: 50%;
+	height: 55%;
+	margin-top: 5%;
+	margin-left: 5%;
+	margin-bottom: 4%;
+}
+
+#info-section{
+	background-color: black;
+	float: right;
+	width: 30%;
+	height: 55%;
+	margin-top: 5%;
+	margin-right: 5%;
+	margin-bottom: 4%;
+
+}
+.section-2{
+	width: 100%;
+	height: 100%;
+	background-color: #AF6E2E;
+}
+
 #image-wrapper{
 	width: 100%;
 	margin: 0 auto;
@@ -40,3 +95,4 @@ body{
 	margin: 0;
 	padding: 0;
 }
+
