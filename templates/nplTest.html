@@ -1,0 +1,26 @@
+<html>
+	<head>
+			<title>habitatStat</title>
+			<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+	</head>
+	<body>
+
+		<div class="main"> 
+			<div id="image-wrapper">
+				<img id="logoImage" src="{{url_for('static', filename='images/logo.PNG')}}">
+			</div>
+			
+			<center>
+				<input class="searchBox" id="inputId">
+				<button class="searchBox" id="inputButton" onClick="submitInput()"><a href="#skip">Submit</a></button>
+			</center>
+			
+		</div>
+		<div >
+			<a name="skip"></a>
+		</div>
+		
+            <p>{{data}}</p>		
+
+	</body>
+</html>
