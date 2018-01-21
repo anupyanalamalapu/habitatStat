@@ -37,18 +37,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
                 <script>
                 function submitInput() {
-                    var article=JSON.stringify({
+                    var article=[{
                     "title": "swag",
                     "content": "WOAWIGJWPOGJAWPOG EOJGOPEWJGA E",
                     "link": "WGAW.agweg.ert"
-                    });
+                    }]
                     console.log(article);
 				var searchInput = $('#inputId').val().toLowerCase();
 				$.ajax(
                                 {   url: '/post',
-                                    data: article,
+                                    data: JSON.stringify({ Articles: article}),
                                     type: 'POST',
-                                    dataType: "json",
+                                    //dataType: "json",
                                     beforeSend: function(x) {
                                     if (x && x.overrideMimeType) {
                                     x.overrideMimeType("application/j-son");

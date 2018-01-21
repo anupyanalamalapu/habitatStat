@@ -20,8 +20,8 @@
                     </div>
                     
                     <center>
-                            <input class="searchBox" id="inputId">
-                            <button class="searchBox" id="inputButton" onClick="submitInput()"><a href="#skip">Submit</a></button>
+                            <input class="searchBox" placeholder="Enter a city" id="inputId">
+                            <button class="searchBox button" id="inputButton" onClick="submitInput()"><a id="no-underline" href="#skip">Submit</a></button>
                     </center>
                 </div>
    			</div>
@@ -31,7 +31,15 @@
 			<div id="skip-atag"><a  name="skip"></a></div><
 			<div id="weather"></div>
 			<div id="graphs"></div>
-			<div id="info-section"></div>
+			<div id="info-section">
+                            <h3>Recent News Summar</h3>
+                                <ul>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                            
+                        </div>
 		<div >
 			<a name="skip"></a>
 		</div>
@@ -40,95 +48,6 @@
 		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<script>
-		  // Initialize Firebase
-		  var config = {
-		    apiKey: "AIzaSyDmeuT27xjm8uiZxXqMjx9N9PqNQVynX-s",
-		    authDomain: "active-bolt-192801.firebaseapp.com",
-		    databaseURL: "https://active-bolt-192801.firebaseio.com",
-		    projectId: "active-bolt-192801",
-		    storageBucket: "active-bolt-192801.appspot.com",
-		    messagingSenderId: "345105813827"
-		  };
-		  firebase.initializeApp(config);
-		</script>
-
-		<script>
-			function submitInput() {
-				var searchInput = $('#inputId').val().toLowerCase();
-				$.ajax({
-					type: "GET",
-					url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyArlXIrPso2sOwQW-7Kpc16yBzyPjSiOow&cx=018119326831568434394:3dak1dqjeou&q=" + searchInput + "%20climate%20change%20news",
-					success: function(data) {
-						// console.log(searchInput);
-						for (var i = 0; i < data.items.length; i++) {
-							var firebaseRef = firebase.database().ref();
-							var title = data.items[i].title;
-							title = title.split('.').join(' ');
-							title = title.split('#').join(' ');
-							title = title.split('[').join(' ');
-							title = title.split(']').join(' ');
-							title = title.split('$').join(' ');
-							// console.log(title);
-							var obj = {
-								link: data.items[i].link,
-								snippet: data.items[i].snippet,
-								text: ''
-							}
-							firebaseRef.child("queryName/" + searchInput).child(title).set(obj);
-						}
-					}
-				});
-				getText();
-			}
-
-			function getText() {
-				var database = firebase.database().ref('queryName');
-				var firebaseRef = firebase.database().ref();
-				database.on('value', function(snapshot) {
-					snapshot.forEach(function(childSnapshot) {
-						childSnapshot.forEach(function(mainAttributes) {
-							var link = mainAttributes.val().link;
-						$.ajax({
-							type: "GET",
-							url: "https://api.diffbot.com/v3/article?token=88324d304eb1dafddd1cf068d478c581&url=" + encodeURIComponent(link),
-							success: function(content) {
-								contentText = content.objects[0].text;
-								// console.log(childSnapshot.key);
-								// console.log(mainAttributes.key);
-								firebaseRef.child("queryName/" + childSnapshot.key).child(mainAttributes.key).update({text: contentText});
-							}
-						});
-						});
-					});
-				});
-				// makePostRequest();
-			}
-
-			// function makePostRequest() {
-			// 	var database = firebase.database().ref('queryName');
-			// 	database.on('value', function(snapshot) {
-			// 		snapshot.forEach(function(childSnapshot) {
-			// 			childSnapshot.forEach(function(mainAttributes) {
-			// 				var text = mainAttributes.val().text;
-			// 				$.ajax({
-			// 	                type: 'POST',
-			// 	                contentType: 'application/json',
-			// 	                data: JSON.stringify(text),
-			// 	                dataType: 'json',
-			// 	                url: '/post',
-			// 	                success: function (e) {
-			// 	                    console.log(text);
-			// 	                },
-			// 	                error: function(error) {
-			// 		                console.log(error);
-			// 		            }
-			// 	            });
-			// 			});
-						
-			// 		});
-			// 	});
-			// }
-
 		</script>
 	</body>
 </html>
