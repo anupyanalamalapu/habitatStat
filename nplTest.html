@@ -1,0 +1,56 @@
+<html>
+	<head>
+			<title>habitatStat</title>
+			<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+
+		<div class="main"> 
+			
+			<center>
+				<input class="searchBox" id="inputId">
+				<button class="searchBox" onClick="submitInput()">Submit</button>
+			</center>
+			
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyDmeuT27xjm8uiZxXqMjx9N9PqNQVynX-s",
+		    authDomain: "active-bolt-192801.firebaseapp.com",
+		    databaseURL: "https://active-bolt-192801.firebaseio.com",
+		    projectId: "active-bolt-192801",
+		    storageBucket: "active-bolt-192801.appspot.com",
+		    messagingSenderId: "345105813827"
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
+		<script>
+			function submitInput() {
+				var searchInput = $('#inputId').val();
+				$.ajax({
+					type: "GET",
+					url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyArlXIrPso2sOwQW-7Kpc16yBzyPjSiOow&cx=018119326831568434394:3dak1dqjeou&q=" +searchInput,
+					success: function(data){
+						for (var i = 0; i < data.items.length; i++) {
+							console.log(data.items[i].link)
+						}
+					}
+				});
+
+				var firebaseRef = firebase.database().ref();
+				var obj = {
+					query: searchInput,
+					numberOfTimesQueried: 3,
+					time: '3:54pm'
+				}
+				firebaseRef.child("queryName/" + searchInput).push(obj).then(function() {
+				});
+			}
+		</script>
+	</body>
+</html>
