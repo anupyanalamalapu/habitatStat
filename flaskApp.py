@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template, request
 from google.cloud import language
 from google.cloud.language import enums
 from google.cloud.language import types
@@ -49,7 +49,13 @@ def npl():
             document=document,
             encoding_type='UTF32',
         )
-
+    
     summary=createSummary(response,title); 
 
     return render_template('nplTest.html', data=summary)
+
+@app.route('/post',methods=['POST'])
+def post():
+    if request.method == 'POST':
+        print request.get_json()
+    return render_template('index.html')

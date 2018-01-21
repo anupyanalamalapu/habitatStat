@@ -34,5 +34,54 @@
                     <li>{{point}}</li>
                     {% endfor %}
                 </ul>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <script>
+                function submitInput() {
+                    var article=JSON.stringify({
+                    "title": "swag",
+                    "content": "WOAWIGJWPOGJAWPOG EOJGOPEWJGA E",
+                    "link": "WGAW.agweg.ert"
+                    });
+                    console.log(article);
+				var searchInput = $('#inputId').val().toLowerCase();
+				$.ajax(
+                                {   url: '/post',
+                                    data: article,
+                                    type: 'POST',
+                                    dataType: "json",
+                                    beforeSend: function(x) {
+                                    if (x && x.overrideMimeType) {
+                                    x.overrideMimeType("application/j-son");
+                                    }},
+                                    success: function(response) {
+                                        console.log('SUCCESS');
+                                        console.log(response);
+                                        },
+                                    error: function(error) {
+                                        console.log('ERROR');
+                                        console.log(error);
+                                }
+                                })
+		};
+
+			// function getText() {
+			// 	var firebaseRef = firebase.database().ref('queryName');
+			// 	firebaseRef.on('child.added,' function(snapshot) {
+			// 		console.log(child.added);
+			// 	});
+				// $.ajax({
+				// 	type: "GET",
+				// 	url: "https://api.diffbot.com/v3/article?token=88324d304eb1dafddd1cf068d478c581&url=" + obj.link,
+				// 	success: function(content) {
+				// 		console.log(searchInput);
+				// 		console.log(title);
+				// 		firebaseRef.child("queryName/" + searchInput).child(title).update({
+				// 			text: content.objects[0].text
+				// 		});
+				// 	}
+
+				// })
+			// }
+		</script>
 	</body>
 </html>
