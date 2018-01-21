@@ -12,7 +12,7 @@
 
 	</head>
 	<body>
-		<div class="main container-fluid"> 
+		<div class="main container-fluid">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div id="image-wrapper">
@@ -22,9 +22,7 @@
                     <center>
                             <input class="searchBox" id="inputId">
                             <button class="searchBox" id="inputButton" onClick="submitInput()"><a href="#skip">Submit</a></button>
-                            <button class="searchBox" id="inputButton" onClick="getText()">getText</button>
                     </center>
-
                 </div>
    			</div>
         </div>
@@ -37,7 +35,6 @@
 		<div >
 			<a name="skip"></a>
 		</div>
-
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -104,9 +101,33 @@
 						});
 					});
 				});
-
+				// makePostRequest();
 			}
 
+			// function makePostRequest() {
+			// 	var database = firebase.database().ref('queryName');
+			// 	database.on('value', function(snapshot) {
+			// 		snapshot.forEach(function(childSnapshot) {
+			// 			childSnapshot.forEach(function(mainAttributes) {
+			// 				var text = mainAttributes.val().text;
+			// 				$.ajax({
+			// 	                type: 'POST',
+			// 	                contentType: 'application/json',
+			// 	                data: JSON.stringify(text),
+			// 	                dataType: 'json',
+			// 	                url: '/post',
+			// 	                success: function (e) {
+			// 	                    console.log(text);
+			// 	                },
+			// 	                error: function(error) {
+			// 		                console.log(error);
+			// 		            }
+			// 	            });
+			// 			});
+						
+			// 		});
+			// 	});
+			// }
 
 		</script>
 	</body>
