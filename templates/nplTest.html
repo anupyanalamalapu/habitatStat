@@ -19,9 +19,9 @@
 		<div >
 			<a name="skip"></a>
 		</div>
-                <h1>{{title}}</h1>		
+                <h1>{{ data[0] }}</h1>		
                 <ul>
-                {% for point in data %}
+                {% for point in data[1:] %}
                     <li>{{point}}</li>
                     {% endfor %}
                 </ul>
