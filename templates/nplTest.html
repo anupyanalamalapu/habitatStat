@@ -19,8 +19,11 @@
 		<div >
 			<a name="skip"></a>
 		</div>
-		
-            <p>{{data}}</p>		
-
+                <h1>{{title}}</h1>		
+                <ul>
+                {% for point in data %}
+                    <li>{{point}}</li>
+                    {% endfor %}
+                </ul>
 	</body>
 </html>
