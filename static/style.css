@@ -35,9 +35,9 @@
 
 #graphs{
 	background-color: white;
-	float: left;
+	float: ;
 	width: 30%;
-	height: 55%;
+	height: 67%;
 	margin-top: 5%;
 	margin-left: 5%;
 	margin-bottom: 4%;
@@ -45,12 +45,13 @@
 
 #info-section{
 	background-color: white;
-	float: right;
 	width: 50%;
 	margin-top: 5%;
-	margin-right: 5%;
 	margin-bottom: 4%;
 	padding: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	opacity: 0.9;
 
 }
 .section-2{
@@ -77,14 +78,15 @@
 
 #inputId{
 	padding: 1% 2% 1% 2%;
-	height: 7%;
+	height: 6%;
 	width: 40%;
-	border: 3px solid grey;
+	border: 1px solid grey;
 	border-radius: 25px;
 }
 
 #inputButton{
-	height: 7%;
+	height: 6%;
+	width: 13%;
 	border: 1px solid grey;
 	border-radius: 25px;
 }
