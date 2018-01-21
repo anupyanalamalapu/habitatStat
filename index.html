@@ -31,24 +31,29 @@
 
 		<script>
 			function submitInput() {
-				var searchInput = $('#inputId').val();
+				var searchInput = $('#inputId').val().toLowerCase();
 				$.ajax({
 					type: "GET",
-					url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyArlXIrPso2sOwQW-7Kpc16yBzyPjSiOow&cx=018119326831568434394:3dak1dqjeou&q=" +searchInput,
-					success: function(data){
+					url: "https://www.googleapis.com/customsearch/v1?key=AIzaSyArlXIrPso2sOwQW-7Kpc16yBzyPjSiOow&cx=018119326831568434394:3dak1dqjeou&q=" + searchInput,
+					success: function(data) {
+						console.log(searchInput)
 						for (var i = 0; i < data.items.length; i++) {
-							console.log(data.items[i].link)
+							console.log(data.items[i])
+							var firebaseRef = firebase.database().ref();
+							var title = data.items[i].title;
+							title = title.split('.').join(' ');
+							title = title.split('#').join(' ');
+							title = title.split('[').join(' ');
+							title = title.split(']').join(' ');
+							title = title.split('$').join(' ');
+							console.log(title);
+							var obj = {
+								link: data.items[i].link,
+								snippet: data.items[i].snippet
+							}
+							firebaseRef.child("queryName/" + searchInput).child(title).set(obj);
 						}
 					}
-				});
-
-				var firebaseRef = firebase.database().ref();
-				var obj = {
-					query: searchInput,
-					numberOfTimesQueried: 3,
-					time: '3:54pm'
-				}
-				firebaseRef.child("queryName/" + searchInput).push(obj).then(function() {
 				});
 			}
 		</script>
